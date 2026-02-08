@@ -16,9 +16,14 @@
     <section class="panel">
       <h2>Treino</h2>
       <p>Digite frases de exemplo (uma por linha) para treinar o JARViS.</p>
-      <textarea id="training" rows="5" placeholder="Ex: Olá, como posso ajudar?
+      <textarea id="training" rows="6" placeholder="Ex: Olá, como posso ajudar?
 Eu posso buscar informações para você."></textarea>
-      <button id="train">Treinar</button>
+      <div class="panel__actions">
+        <button id="train">Treinar</button>
+        <button id="save-training" class="button--ghost">Salvar memória</button>
+        <button id="clear-training" class="button--ghost">Limpar memória</button>
+      </div>
+      <p id="training-status" class="status">Nenhum treino salvo ainda.</p>
     </section>
 
     <section class="panel">
@@ -27,6 +32,7 @@ Eu posso buscar informações para você."></textarea>
       <div class="chat__input">
         <input id="prompt" type="text" placeholder="Digite sua mensagem" />
         <button id="send">Enviar</button>
+        <button id="clear-chat" class="button--ghost">Limpar chat</button>
       </div>
     </section>
   </main>

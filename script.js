@@ -90,8 +90,15 @@ const trainingField = document.getElementById("training");
 const promptField = document.getElementById("prompt");
 const trainButton = document.getElementById("train");
 const sendButton = document.getElementById("send");
+const saveTrainingButton = document.getElementById("save-training");
+const clearTrainingButton = document.getElementById("clear-training");
+const clearChatButton = document.getElementById("clear-chat");
+const trainingStatus = document.getElementById("training-status");
 
 let transitions = buildTransitions(defaultCorpus);
+let currentTraining = [...defaultCorpus];
+
+const storageKey = "jarvis-training";
 
 function appendMessage(text, type) {
   const message = document.createElement("div");
@@ -101,13 +108,29 @@ function appendMessage(text, type) {
   chat.scrollTop = chat.scrollHeight;
 }
 
+function updateTrainingStatus(message) {
+  trainingStatus.textContent = message;
+}
+
+function setTraining(lines, { persist = false } = {}) {
+  currentTraining = lines.length ? lines : [...defaultCorpus];
+  transitions = buildTransitions(currentTraining);
+  trainingField.value = currentTraining.join("\n");
+  if (persist) {
+    localStorage.setItem(storageKey, JSON.stringify(currentTraining));
+    updateTrainingStatus("Memória salva localmente no navegador.");
+  } else {
+    updateTrainingStatus("Treino atualizado (ainda não salvo).");
+  }
+}
+
 function handleTrain() {
   const lines = trainingField.value
     .split("\n")
     .map((line) => line.trim())
     .filter(Boolean);
 
-  transitions = buildTransitions(lines.length ? lines : defaultCorpus);
+  setTraining(lines, { persist: false });
   appendMessage("Treino atualizado. JARViS pronto.", "bot");
 }
 
@@ -125,8 +148,31 @@ function handleSend() {
   appendMessage(response, "bot");
 }
 
+function handleSaveTraining() {
+  const lines = trainingField.value
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  setTraining(lines, { persist: true });
+}
+
+function handleClearTraining() {
+  localStorage.removeItem(storageKey);
+  setTraining(defaultCorpus, { persist: false });
+  updateTrainingStatus("Memória limpa. Usando o corpus padrão.");
+  appendMessage("Memória limpa. Vamos recomeçar.", "bot");
+}
+
+function handleClearChat() {
+  chat.innerHTML = "";
+  appendMessage("Chat limpo. Em que posso ajudar agora?", "bot");
+}
+
 trainButton.addEventListener("click", handleTrain);
 sendButton.addEventListener("click", handleSend);
+saveTrainingButton.addEventListener("click", handleSaveTraining);
+clearTrainingButton.addEventListener("click", handleClearTraining);
+clearChatButton.addEventListener("click", handleClearChat);
 
 promptField.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -134,3 +180,19 @@ promptField.addEventListener("keydown", (event) => {
     handleSend();
   }
 });
+
+const storedTraining = localStorage.getItem(storageKey);
+if (storedTraining) {
+  try {
+    const parsed = JSON.parse(storedTraining);
+    if (Array.isArray(parsed) && parsed.length) {
+      setTraining(parsed, { persist: false });
+      updateTrainingStatus("Memória carregada do navegador.");
+    }
+  } catch (error) {
+    updateTrainingStatus("Não foi possível ler a memória salva.");
+  }
+} else {
+  trainingField.value = defaultCorpus.join("\n");
+  updateTrainingStatus("Usando corpus padrão. Salve se quiser guardar.");
+}

@@ -17,7 +17,7 @@ Treinar com frases e responder a um prompt:
 python ai_chat.py --train "Olá, tudo bem?" "Eu gosto de aprender." --prompt "Olá"
 ```
 
-Para usar a versão web, basta abrir o arquivo `index.html` no navegador.
+Para usar a versão web, basta abrir o arquivo `index.html` no navegador. A interface permite treinar o JARViS, conversar e salvar a memória do treino localmente no navegador.
 
 Modo interativo:
 
