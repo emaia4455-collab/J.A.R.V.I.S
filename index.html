@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JARViS Chat</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1>JARViS</h1>
+      <p>Assistente virtual inspirado no Homem de Ferro.</p>
+    </header>
+
+    <section class="panel">
+      <h2>Treino</h2>
+      <p>Digite frases de exemplo (uma por linha) para treinar o JARViS.</p>
+      <textarea id="training" rows="6" placeholder="Ex: Olá, como posso ajudar?
+Eu posso buscar informações para você."></textarea>
+      <div class="panel__actions">
+        <button id="train">Treinar</button>
+        <button id="save-training" class="button--ghost">Salvar memória</button>
+        <button id="clear-training" class="button--ghost">Limpar memória</button>
+      </div>
+      <p id="training-status" class="status">Nenhum treino salvo ainda.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Conversa</h2>
+      <div id="chat" class="chat"></div>
+      <div class="chat__input">
+        <input id="prompt" type="text" placeholder="Digite sua mensagem" />
+        <button id="send">Enviar</button>
+        <button id="clear-chat" class="button--ghost">Limpar chat</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

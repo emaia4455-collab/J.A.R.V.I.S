@@ -1,0 +1,126 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #0d0f1a;
+  color: #eef1ff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e2350, #0d0f1a 60%);
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.app__header {
+  text-align: center;
+}
+
+.app__header h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.75rem;
+  letter-spacing: 0.2rem;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+textarea,
+input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 17, 38, 0.8);
+  color: #eef1ff;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 0.75rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  background: #5f7cff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #7d94ff;
+}
+
+.button--ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #eef1ff;
+}
+
+.button--ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.status {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  color: rgba(238, 241, 255, 0.8);
+}
+
+.chat {
+  min-height: 220px;
+  max-height: 320px;
+  overflow-y: auto;
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.chat__message {
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: rgba(95, 124, 255, 0.2);
+}
+
+.chat__message--user {
+  background: rgba(255, 255, 255, 0.15);
+  text-align: right;
+}
+
+.chat__input {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.chat__input input {
+  flex: 1;
+}
+
+@media (max-width: 640px) {
+  .chat__input {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
