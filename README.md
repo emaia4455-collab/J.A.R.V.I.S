@@ -19,6 +19,16 @@ python ai_chat.py --train "Olá, tudo bem?" "Eu gosto de aprender." --prompt "Ol
 
 Para usar a versão web, basta abrir o arquivo `index.html` no navegador. A interface permite treinar o JARViS, conversar e salvar a memória do treino localmente no navegador.
 
+## Evitar erro 404 no GitHub Pages
+
+Ao publicar no GitHub Pages, use sempre o link com o nome do repositório:
+
+```
+https://SEU_USUARIO.github.io/SEU_REPOSITORIO/
+```
+
+Este repositório também inclui um `404.html` que redireciona automaticamente para a página inicial, reduzindo erros caso o endereço esteja incompleto.
+
 Modo interativo:
 
 ```bash
