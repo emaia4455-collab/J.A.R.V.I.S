@@ -29,6 +29,8 @@ https://SEU_USUARIO.github.io/SEU_REPOSITORIO/
 
 Este repositório também inclui um `404.html` que redireciona automaticamente para a página inicial, reduzindo erros caso o endereço esteja incompleto.
 
+Se o site não abrir, confira se o workflow de GitHub Pages rodou na branch onde você fez o push (main, master ou work) e se o deploy foi concluído sem erros.
+
 Modo interativo:
 
 ```bash
