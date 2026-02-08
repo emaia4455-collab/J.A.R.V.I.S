@@ -31,6 +31,10 @@ Este repositório também inclui um `404.html` que redireciona automaticamente p
 
 Se o site não abrir, confira se o workflow de GitHub Pages rodou na branch onde você fez o push (main, master ou work) e se o deploy foi concluído sem erros.
 
+## Domínio personalizado
+
+Este repositório inclui um arquivo `CNAME` com o domínio `jarvis.maia.com`. Para o domínio funcionar, crie um registro CNAME no seu provedor de DNS apontando para `emaia4455-colaboracao.github.io`.
+
 Modo interativo:
 
 ```bash
